@@ -144,17 +144,15 @@ void loop() {
     }
 
     for(i=0; i<10; i++){ 
-   for(z=0; z<5; z++){
     digitalWrite(latchPin, LOW);
     digitalWrite(enable, LOW); // ?
     shiftOut(dataPin, clockPin, MSBFIRST, (        (((num[i]&0x000F)>>z)&0x000F)  + (((num[i]&0x00F0)>>z)&0x00F0) + (((num[i]&0x0F00)>>z)&0x0F00)   +    (( (num[i]&0xF000)>>z)&0xF000)                       )>>8);
     shiftOut(dataPin, clockPin, MSBFIRST, (        (((num[i]&0x000F)>>z)&0x000F)  + (((num[i]&0x00F0)>>z)&0x00F0) + (((num[i]&0x0F00)>>z)&0x0F00)   +    (( (num[i]&0xF000)>>z)&0xF000)                       )); 
-    FloorControl(4-z);
     digitalWrite(latchPin, HIGH);
     delay(1000);
     digitalWrite(enable, HIGH); // ?
    }
-}
+
 
 }
 
