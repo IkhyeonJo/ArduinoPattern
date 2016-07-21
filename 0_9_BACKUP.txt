@@ -1,0 +1,127 @@
+
+int latchPin = 3;
+int clockPin = 4;
+int dataPin = 2;
+int i;
+/*
+int num0[2]={0x6D,0xB6};
+int num1[2]={0x66,0x66};
+int num2[2]={0xF6,0x96};
+int num3[2]={0xF7,0x7F};
+int num4[2]={0x2F,0xAA};
+int num5[2]={0xE1,0xEF};
+int num6[2]={0x69,0xE8};
+int num7[2]={0x11,0x9F};
+int num8[2]={0x77,0xEE};
+int num9[2]={0x17,0x96};
+*/
+int num[10][2]={{0x6D,0xB6},{0x66,0x66},{0xF6,0x96},{0xF7,0x7F},{0x2F,0xAA},{0xE1,0xEF},{0x69,0xE8},{0x11,0x9F},{0x77,0xEE},{0x17,0x96}}; //0~9
+void setup() {
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+}
+
+void loop() {
+  for(i=0; i<10; i++)
+  {
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin, clockPin, MSBFIRST, num[i][0]);
+    shiftOut(dataPin, clockPin, MSBFIRST, num[i][1]);  
+    digitalWrite(latchPin, HIGH);
+    delay(1000);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int latchPin = 3;
+int clockPin = 4;
+int dataPin = 2;
+int i;
+/*
+int num0[2]={0x6D,0xB6};
+int num1[2]={0x66,0x66};
+int num2[2]={0xF6,0x96};
+int num3[2]={0xF7,0x7F};
+int num4[2]={0x2F,0xAA};
+int num5[2]={0xE1,0xEF};
+int num6[2]={0x69,0xE8};
+int num7[2]={0x11,0x9F};
+int num8[2]={0x77,0xEE};
+int num9[2]={0x17,0x96};
+*/
+int num[10]={0x6DB6,0x6666,0xF696,0xF77F,0x2FAA,0xE1EF,0x69E8,0x119F,0x77EE,0x1796}; //0~9
+void setup() {
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+}
+
+void loop() {
+  for(i=0; i<10; i++)
+  {
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin, clockPin, MSBFIRST, num[i]>>8);
+    shiftOut(dataPin, clockPin, MSBFIRST, num[i]);  
+    digitalWrite(latchPin, HIGH);
+    delay(1000);
+  }
+}
